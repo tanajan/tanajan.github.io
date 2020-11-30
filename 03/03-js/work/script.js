@@ -29,6 +29,8 @@ Additional line 2 for this item`,
 
 function renderDataTable() {
     let subTotal = 0
+    let salestax = 1
+    let Totaldue = 0
     $('#dataTable').html("")
     data.forEach(function (item) {
         subTotal += item.amount
@@ -40,8 +42,12 @@ function renderDataTable() {
     </tr>`
         console.log({ dataRow })
         $('#dataTable').append(dataRow)
+        salestax = subTotal * 0.1
     })
+    Totaldue = subTotal - salestax
     $('#subTotal').html(subTotal)
+    $('#SalesTax').html(salestax)
+    $('#TotalDue').html(Totaldue)
 
 }
 
