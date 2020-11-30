@@ -1,0 +1,51 @@
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+#sub-total {
+    border-top: solid #000 1px;
+}
+
+td {
+    vertical-align: top;
+}
+
+.header {
+    background-color: #eeeeee;
+    color: navy;
+    border: solid #000 1px;
+}
+
+#total-due {
+    border-bottom: solid #000 1px;
+}
+
+.data {
+    border-left: solid #000 1px;
+    border-right: solid #000 1px;
+}
+
+.r {
+    text-align: right;
+}
+
+.header2 {
+    background-color: #eeeeee;
+    color: navy;
+    border: solid #000 1px;
+    font-size: 12px;
+}
+
+.sample {
+    font-size: 12px;
+}
+
+.sub2 {
+    font-size: 12px;
+    border: solid black 1px;
+}
+
+.total {
+    border-bottom: solid black 1px;
+}
