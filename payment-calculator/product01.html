@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <title>Assignment 01</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./scripts/scripts.js"> </script>
+
+</head>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="./product01.html">Nintendo Switch</a>
+        <a class="nav-item nav-link" href="./product02.html">PS5</a>
+        <a class="nav-item nav-link" href="./product03.html">XBOX</a>
+        <a class="nav-item nav-link" href="./product04.html">Nintendo Wii</a>
+        <a class="nav-item nav-link" href="./product05.html">PS4</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<body onload="calculate()" style="margin: 0%;">
+  <div class="container-fluid" style="padding: 3%;">
+    <div class="row" style="padding-top:2%;">
+      <div class="col-md-12" style="background-image: linear-gradient(to bottom,#eeffba,#beed53); padding-top:2%;">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="./image/switch-removebg-preview.png" alt="NintendoSwich image" width="300" height="300 ">
+            <h1 class="text-success" style="font-size: medium;">
+              <b style="font-size: 28px;">Nintendo Switch : Animal Crossing Edition</b>
+            </h1>
+            <p class="text-danger" style="font-size: 22px;">
+              <strong id="price">14400</strong> Baht
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Interest rate
+            </p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" onchange="calculate();">
+              <label class="btn btn-primary">
+                <input type="radio" name="intrate" id="button1" autocomplete="off" value="0" checked> 0 %
+              </label>
+
+              <label class="btn btn-primary active">
+                <input type="radio" name="intrate" id="button2" autocomplete="off" value="4">
+                4 %
+              </label>
+
+              <label class="btn btn-primary">
+                <input type="radio" name="intrate" id="button3" autocomplete="off" value="8">
+                8 %
+              </label>
+            </div>
+            <p>
+              <br>
+              Downpayment
+            </p>
+            <p style="text-align: left; font-size: 18px;" class="text-success">
+              <strong>1,440 Baht or </strong> <strong id="downvalue"> 10 </strong> %
+            </p>
+            <p>
+              Payment Period
+            </p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" onchange="calculate();">
+              <label class="btn btn-primary">
+                <input type="radio" name="period" id="button1" autocomplete="off" value="6" checked> 6 Months
+              </label>
+
+              <label class="btn btn-primary active">
+                <input type="radio" name="period" id="button2" autocomplete="off" value="12">
+                12 Months
+              </label>
+
+              <label class="btn btn-primary">
+                <input type="radio" name="period" id="button3" autocomplete="off" value="18">
+                18 Months
+              </label>
+
+              <label class="btn btn-primary">
+                <input type="radio" name="period" id="button4" autocomplete="off" value="24">
+                24 Months
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div class="row" style="padding-top:2%;">
+      <div class="col-md-12" style="margin-top: 2%;">
+        <div style="text-align: center;">
+          <p style="font-size: 32px;">
+            !!!<b class="text-danger">Monthly Payment</b>!!!<br><br>
+          </p>
+          <div id="payment" style="font-size: 28px;"></div>
+        </div>
+        <p style="text-align: center; font-size: 25px;">
+          <br><br> Baht Per Month ( 10 % DownPayment ) 
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
