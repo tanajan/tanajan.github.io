@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
@@ -21,16 +21,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Container>
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">
             <img
-              src="/aaa.png"
+              src={`${process.env.PUBLIC_URL}/aaa.png`}
               width="30"
               height="30"
               className="d-inline-block align-top"
-              alt="React Bootstrap logo"
+              alt="Pic"
             /> Library
           </Navbar.Brand>
           <Nav className="mr-auto">

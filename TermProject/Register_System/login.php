@@ -41,6 +41,15 @@
         <div class="input-group">
             <button type="submit" name="login_user" class="btn">Login</button>
         </div>
+        <div class="text-center">
+            <a href="/mainpage.html" class="btn btn-outline-success btn-lg active" role="button"
+            aria-pressed="true">Get Started</a>
+            <br><br>
+            <a href="/Admin/main.html" class="btn btn-outline-success btn-lg active" role="button"
+            aria-pressed="true">Admin</a>
+            <br><br>
+        </div>
+        
         <p>Not yet a member? <a href="register.php">Sign Up</a></p>
     </form>
 
