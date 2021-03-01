@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
-    <Router >
+    <Router basename="my-app">
       <Container>
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">
