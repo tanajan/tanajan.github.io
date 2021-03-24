@@ -1,3 +1,7 @@
+<?php
+include('./Admin/server.php');
+$sexdefault = "M";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,17 +22,15 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #a8dee0;">
         <a class="navbar-brand" href="#">
-            <img src="/image/caticon.png" width="30" height="30" class="d-inline-block align-top"
-                alt="Need Hooman Icon">
+            <img src="/image/caticon.png" width="30" height="30" class="d-inline-block align-top" alt="Need Hooman Icon">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/mainpage.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/mainpage.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact.html">Contact</a>
@@ -53,24 +55,42 @@
     <div class="container-fluid" style="margin-left: 5%;">
         <div class="row">
             <div class="col-md-2">
-                <h1 style="font-size: 25px;">Gender</h1>
+                <h1 style="font-size: 25px;">Sex</h1>
             </div>
             <div class="col-md-4">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        - Gender -
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#" data-value="- Gender -">- Gender -</a></li>
-                        <li><a href="#" data-value="Male">Male</a></li>
-                        <li><a href="#" data-value="Female">Female</a></li>
-                    </ul>
-                    <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Male</a>
-                      <a class="dropdown-item" href="#">Female</a>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
+                    <?php
+                    // sex
+                    $sex = (empty($_GET['sex'])) ? $sexdefault : $_GET['sex'];
+
+                    $sql = "SELECT * FROM cat";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        $counter = 0;
+                        echo '<select name="sex">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $selected = ($row['sex'] == $sex) ? "selected" : "";
+                            echo "<option value=\"{$row['sex']}\" $selected>{$row['sex']}</option>";
+                            $counter++;
+                        }
+                        echo '</select>';
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
+                    <input type="submit" value="Search" />
+                    <!-- <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="firstmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            - Gender -
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="firstmenu">
+                            <li><a href="#" data-value="- Gender -">- Gender -</a></li>
+                            <li><a href="#" data-value="Male">Male</a></li>
+                            <li><a href="#" data-value="Female">Female</a></li>
+                        </ul>
                     </div> -->
-                </div>
             </div>
             <div class="col-md-6">
 
@@ -83,12 +103,11 @@
             </div>
             <div class="col-md-4">
                 <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="secondmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         - Age -
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <ul class="dropdown-menu" aria-labelledby="secondmenu">
                         <li><a href="#" data-value="action">- Age -</a></li>
                         <li><a href="#" data-value="another action">less than 6 months</a></li>
                         <li><a href="#" data-value="something else here">6 months to 1 year</a></li>
@@ -107,12 +126,11 @@
             </div>
             <div class="col-md-4">
                 <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="thirdmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         - Breed -
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <ul class="dropdown-menu" aria-labelledby="thirdmenu">
                         <li><a href="#" data-value="action">- Breed -</a></li>
                         <li><a href="#" data-value="another action">Scottish fold</a></li>
                         <li><a href="#" data-value="something else here">American curl</a></li>
@@ -138,44 +156,34 @@
                 <button type="submit" name="filter_cat" class="btn">Search</button>
             </div> -->
             <div class="col-md-4">
-                <a href="/mainpage2.html" class="btn btn-outline-success btn-lg active" role="button"
-                    aria-pressed="true">Search</a>
+                <a href="/mainpage2.html" class="btn btn-outline-success btn-lg active" role="button" aria-pressed="true">Search</a>
             </div>
             <div class="col-md-6">
 
             </div>
         </div>
     </div>
+    <hr>
+    <h2 style="padding-left:2.5%; padding-right:2.5%">List of Cats</h2>
     <!-- Item showed -->
     <div class="container-fluid" style="padding-left: 10%; padding-right: 0%; padding-top: 5%;">
-        <div class="row">
-            <div class="col-md-4">
-                <a href="/Cat/cat01.html">
-                    <img src="/image/cat01.jpg" alt="Cat01" style="width: 200px; height: 200px;">
-                    <p>Milo 3months Male</p>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/Cat/cat02.html">
-                    <img src="/image/cat02.jpg" alt="Cat02" style="width: 200px; height: 200px;">
-                    <p>BlackStar 8 months Female</p>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/Cat/cat03.html">
-                    <img src="/image/cat03.jpg" alt="Cat03" style="width: 200px; height: 200px;">
-                    <p>Nungmeow 2 months Female</p>
-                </a>
-            </div>
-        </div>
-        <div class="row" style="padding-top: 5%;">
-            <div class="col-md-4">
-                <a href="/Cat/cat04.html">
-                    <img src="/image/cat04.jpg" alt="Cat04" style="width: 200px; height: 200px;">
-                    <p>Sarochar 1 year 2 months Female</p>
-                </a>
-            </div>
-        </div>
+        <?php
+            $sql = "SELECT * FROM cat";
+            
+            $result = mysqli_query($conn,$sql);
+
+            if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo "[{$row['id']}]: - {$row['name']} {$row['sex']} <br>";
+                $counter++;
+            }
+            echo "$counter results";
+        } else {
+            echo "0 result";
+        }
+        
+        mysqli_close($conn);
+        ?>
     </div>
 </body>
 

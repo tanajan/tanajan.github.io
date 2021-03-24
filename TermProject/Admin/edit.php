@@ -103,13 +103,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/Admin/main.html">List</a>
+                    <a class="nav-link" href="/Admin/main.php">List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Admin/add.html">Add</a>
+                    <a class="nav-link" href="/Admin/add.php">Add</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Admin/request.html">Request</a>
+                    <a class="nav-link" href="/Admin/request.php">Request</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -136,62 +136,63 @@
         <br>
         <div class="row">
             <div class="col-md-6 text-center">
-                <img src="/image/uploadcat.jpg" alt="Cat01" style="width: 300px; height: 300px;">
+                <img src="/image/cat01.jpg" alt="Cat01" style="width: 300px; height: 300px;">
                 <a href="#"><button>Upload Pic</button></a>
             </div>
             <div class="col-md-6">
-                <form >
-                    <div class="row">
-                      <div class="col-25">
-                        <label for="fname">Name</label>
-                      </div>
-                      <div class="col-75">
-                        <input type="text" id="fname" name="firstname" placeholder="Cat name..">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-25">
-                        <label for="country">Sex</label>
-                      </div>
-                      <div class="col-75">
-                        <select id="country" name="country">
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                        </select>
-                      </div>
-                    </div>
+                <form>
                     <div class="row">
                         <div class="col-25">
-                          <label for="lname">Age</label>
+                            <label for="fname">Name</label>
                         </div>
                         <div class="col-75">
-                          <input type="text" id="lname" name="lastname" placeholder="Age ..">
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-25">
-                          <label for="lname">Color</label>
+                            <label for="country">Sex</label>
                         </div>
                         <div class="col-75">
-                          <input type="text" id="lname" name="lastname" placeholder="Cat color..">
+                            <select id="country" name="country">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
                         </div>
-                      </div>
-                      <div class="row">
+                    </div>
+                    <div class="row">
                         <div class="col-25">
-                          <label for="subject">Description</label>
+                            <label for="lname">Age</label>
                         </div>
                         <div class="col-75">
-                          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                            <input type="text" id="lname" name="lastname" placeholder="3 months">
                         </div>
-                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="lname">Color</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="lname" name="lastname" placeholder="tri color">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="subject">Description</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea id="subject" name="subject" placeholder="Write something.."
+                                style="height:200px"></textarea>
+                        </div>
+                    </div>
                     <div class="row">
                         <a href="/Admin/main.html">
-                      <button style="background-color: #a8dee0;">Add</button></a>
+                            <button style="background-color: #a8dee0;">Save</button></a>
                     </div>
-                    </form>
+                </form>
             </div>
         </div>
-        </div>
+    </div>
     </div>
     </div>
 </body>

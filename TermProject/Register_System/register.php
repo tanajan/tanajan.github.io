@@ -47,6 +47,10 @@
             <input type="password" name="password_2">
         </div>
         <div class="input-group">
+            <label for="questionAns">How are you living (Please answer carefully, This will affect your adoption request in the future. )</label>
+            <input type="text" name="questionAns">
+        </div>
+        <div class="input-group">
             <button type="submit" name="reg_user" class="btn">Register</button>
         </div>
         <p>Already a member? <a href="login.php">Sign in</a></p>

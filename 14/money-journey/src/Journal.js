@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
+import { Button, Modal } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Select from 'react-select'
+import { format } from 'date-fns'
+import { BsPlus } from "react-icons/bs";
 
-// Firebase
+// // Firebase
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import firebase from 'firebase/app'
 import 'firebase/firestore'
@@ -36,6 +39,7 @@ const categories = [
 ]
 
 export default function Journal() {
+  const [showAddForm, setShowAddForm] = useState(false)
   const [records, setRecords] = useState([])
   const [total, setTotal] = useState(0)
 
@@ -52,16 +56,10 @@ export default function Journal() {
     if (data) { // Guard condition
       let t = 0
       let r = data.map((d, i) => {
-        console.log('useEffect',d)
+        console.log('useEffect', format(d.createdAt.toDate(), "yyyy-MM-dd"))
         t += d.amount
         return (
-          <tr>
-            <td>{i + 1}</td>
-            <td>{d.createdAt.seconds}</td>
-            <td>{d.description}</td>
-            <td>{d.category.name}</td>
-            <td>{d.amount}</td>
-          </tr>
+          <JournalRow data={d} i={i} />
         )
       })
 
@@ -78,17 +76,10 @@ export default function Journal() {
       let t = 0
       let filteredData = data.filter(d => obj.id == 0 || d.category.id == obj.id)
       let r = filteredData.map((d, i) => {
-        console.log('filter',d)
+        console.log('filter', d)
         t += d.amount
         return (
-          <tr>
-            <td>{i + 1}</td>
-            {/* <td>{d.createdAt.toDate()}</td> */}
-            <td>---</td>
-            <td>{d.description}</td>
-            <td>{d.category.name}</td>
-            <td>{d.amount}</td>
-          </tr>
+          <JournalRow data={d} i={i} />
         )
       })
 
@@ -98,12 +89,20 @@ export default function Journal() {
   }
 
 
+  // Handlers for Modal Add Form
+  const handleShowAddForm = () =>  setShowAddForm(true) 
+
+  // Handlers for Modal Add Form
+  const handleCloseAddForm = () => setShowAddForm(false)
 
   return (
     <Container>
       <Row>
         <Col>
           <h1>Journal</h1>
+          <Button variant="outline-dark" onClick={handleShowAddForm}>
+            <BsPlus /> Add
+      </Button>
         </Col>
         <Col>
           Category:
@@ -136,6 +135,36 @@ export default function Journal() {
           </td>
         </tfoot>
       </Table>
+
+
+      <Modal show={showAddForm} onHide={handleCloseAddForm}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseAddForm}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleCloseAddForm}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
+  )
+}
+
+function JournalRow(props) {
+  let d = props.data
+  let i = props.i
+  return (
+    <tr>
+      <td>{i + 1}</td>
+      <td>{format(d.createdAt.toDate(), "yyyy-MM-dd")}</td>
+      <td>{d.description}</td>
+      <td>{d.category.name}</td>
+      <td>{d.amount}</td>
+    </tr>
   )
 }

@@ -9,6 +9,7 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password_1 = mysqli_real_escape_string($conn, $_POST['password_1']);
         $password_2 = mysqli_real_escape_string($conn, $_POST['password_2']);
+        $questionAns = mysqli_real_escape_string($conn, $_POST['questionAns']);
 
         if (empty($username)) {
             array_push($errors, "Username is required");
@@ -43,7 +44,7 @@
         if (count($errors) == 0) {
             $password = md5($password_1);
 
-            $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')";
+            $sql = "INSERT INTO user (username, email, password,questionAns) VALUES ('$username', '$email', '$password','$questionAns')";
             mysqli_query($conn, $sql);
 
             $_SESSION['username'] = $username;
